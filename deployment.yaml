@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-deployment
+  labels:
+    app: todo
+spec:
+  replicas: 3  # Number of pod replicas to run
+  selector:
+    matchLabels:
+      app: todo  # Label to match pods
+  template:
+    metadata:
+      labels:
+        app: todo  # Label assigned to pods
+    spec:
+      containers:
+        - name: todo-container
+          image: banuprakash2148/todo:latest  # Your Docker image
+          ports:
+            - containerPort: 3000  # The port your application runs on

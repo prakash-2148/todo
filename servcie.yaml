@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: todo-service
+  labels:
+    app: todo
+spec:
+  type: ClusterIP  # Change to NodePort or LoadBalancer if external access is needed
+  selector:
+    app: todo  # Matches the labels of the pods
+  ports:
+    - port: 80  # Port exposed by the service
+      targetPort: 3000  # Port on the container to forward traffic to
